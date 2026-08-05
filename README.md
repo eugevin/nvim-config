@@ -39,8 +39,6 @@ Rust, TypeScript/JavaScript, Lua + others via [Mason](https://github.com/mason-o
 | `<leader>ff` | Find files         |
 | `<leader>fg` | Live grep          |
 | `<leader>fb` | Buffer list        |
-| `<leader>n`  | New vertical split |
-| `<leader>w`  | Next window        |
 
 ---
 
