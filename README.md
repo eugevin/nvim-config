@@ -26,7 +26,7 @@ Maintained for personal use. Updates may be occasional. 🚀
 
 ## 🌐 Languages
 
-Rust, TypeScript/JavaScript, Lua + others via [Mason](https://github.com/mason-org/mason.nvim)
+Rust, TypeScript/JavaScript, Lua, Go + others via [Mason](https://github.com/mason-org/mason.nvim)
 
 ---
 
