@@ -44,9 +44,32 @@ require("lazy").setup({
     },
 
     -- LSP
-    "neovim/nvim-lspconfig",
-    { "mason-org/mason.nvim", opts = {} },
-    "mason-org/mason-lspconfig.nvim",
+    {
+      "mason-org/mason-lspconfig.nvim",
+      dependencies = {
+        "neovim/nvim-lspconfig",
+        { "mason-org/mason.nvim", opts = {} }
+      },
+      config = function()
+        require("mason-lspconfig").setup {
+          ensure_installed = { "lua_ls", "rust_analyzer", "ts_ls", "vue_ls", "svelte" },
+        }
+      end
+    },
+
+    -- HIGHLIGHTING
+
+    {
+      'nvim-treesitter/nvim-treesitter',
+      lazy = false,
+      build = ':TSUpdate',
+      config = function()
+        vim.api.nvim_create_autocmd("FileType", {
+          pattern = { "vue", "svelte" },
+          callback = function() vim.treesitter.start() end,
+        })
+      end
+    },
 
     -- CMP
     "hrsh7th/cmp-nvim-lsp",
@@ -57,6 +80,22 @@ require("lazy").setup({
 
     "L3MON4D3/LuaSnip",
     "saadparwaiz1/cmp_luasnip",
+
+    -- Colorizer
+    {
+      "brenoprata10/nvim-highlight-colors",
+      config = function()
+        vim.opt.termguicolors = true
+
+        require("nvim-highlight-colors").setup({
+          render = 'virtual',
+          virtual_symbol = '󱓻',
+          virtual_symbol_prefix = '',
+          virtual_symbol_suffix = ' ',
+          virtual_symbol_position = 'inline',
+        })
+      end,
+    }
   },
 
   -- colorscheme that will be used when installing plugins.
@@ -66,5 +105,4 @@ require("lazy").setup({
   -- checker = { enabled = true },
 })
 
-require("plugins.mason")
 require("plugins.cmp")
