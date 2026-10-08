@@ -52,7 +52,7 @@ require("lazy").setup({
       },
       config = function()
         require("mason-lspconfig").setup {
-          ensure_installed = { "lua_ls", "rust_analyzer", "ts_ls", "vue_ls", "svelte" },
+          ensure_installed = { "lua_ls", "rust_analyzer", "ts_ls", "vue_ls", "svelte", "gopls" },
         }
       end
     },
