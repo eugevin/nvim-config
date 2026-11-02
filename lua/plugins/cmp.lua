@@ -66,9 +66,22 @@ cmp.setup.cmdline(':', {
 -- Set up lspconfig.
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
--- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+-- Vue: vue_ls (v3) needs ts_ls attached to .vue buffers with @vue/typescript-plugin
+local vue_language_server_path = vim.fn.stdpath("data")
+  .. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
 
--- vim.lsp.config('<YOUR_LSP_SERVER>', {
---   capabilities = capabilities
--- })
--- vim.lsp.enable('<YOUR_LSP_SERVER>')
+vim.lsp.config("ts_ls", {
+  init_options = {
+    plugins = {
+      {
+        name = "@vue/typescript-plugin",
+        location = vue_language_server_path,
+        languages = { "vue" },
+        configNamespace = "typescript",
+      },
+    },
+  },
+  filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+})
+
+vim.lsp.config("*", { capabilities = capabilities })
