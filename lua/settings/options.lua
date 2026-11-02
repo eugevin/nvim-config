@@ -1,35 +1,26 @@
 -- Base options
-
-local opt = vim.opt
-
-opt.number = true
-opt.relativenumber = true
-opt.expandtab = true
-opt.shiftwidth = 2
-opt.tabstop = 2
-opt.smartindent = true
-opt.wrap = false
-opt.hidden = true
-opt.swapfile = false
-opt.backup = false
-opt.undofile = true
-opt.signcolumn = "yes"
-opt.termguicolors = true
-opt.clipboard = "unnamedplus"
-opt.termguicolors = true
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.smartindent = true
+vim.opt.wrap = false
+vim.opt.hidden = true
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undofile = true
+vim.opt.signcolumn = "yes"
+vim.opt.termguicolors = true
+vim.opt.clipboard = "unnamedplus"
+vim.opt.termguicolors = true
 
 -- Errors
-
-local diagnostic = vim.diagnostic
-
-diagnostic.config({
+vim.diagnostic.config({
     virtual_text = true,
 })
 
--- Colorscheme
-
-local cmd = vim.cmd
-
-cmd("colorscheme everforest")
+-- Colorscheme and lualine
+vim.cmd("colorscheme everforest")
 
 require("lualine").setup()
